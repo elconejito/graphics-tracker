@@ -1,6 +1,47 @@
+#################
+## PHPStorm
+#################
+.idea
+
+#############
+## Windows detritus
+#############
+
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Mac crap
+.DS_Store
+
+#############
+## Cloud9
+#############
+
+.c9revisions/
+.c9/
+
+#############
+## Laravel
+#############
 /vendor
-/node_modules
 /bootstrap/compiled.php
 .env.*.php
 .env.php
 .env
+
+#############
+## Node & Grunt
+#############
+/node_modules
+/resources/assets/vendor/
+
+#############
+## Codeception
+#############
+/tests/_output/*
