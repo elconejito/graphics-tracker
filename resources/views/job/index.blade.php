@@ -10,7 +10,8 @@
         </div>
         <div class="row">
             <div class="col-md-8">
-                <form>
+                <form method="POST" action="{{ action('JobsController@store') }}">
+                {{ Form }}
                     <div class="input-group">
                         <input type="text" class="form-control" id="graphic" name="graphic" placeholder="Graphic Number or Name">
                         <span class="input-group-btn">

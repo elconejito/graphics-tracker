@@ -15,7 +15,7 @@ Route::get('/', 'WelcomeController@index');
 
 Route::get('home', 'HomeController@index');
 
-Route::resource('jobs', 'JobController');
+Route::resource('jobs', 'JobsController');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
