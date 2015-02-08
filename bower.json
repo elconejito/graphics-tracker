@@ -1,0 +1,11 @@
+{
+  "name": "Graphics-Tracker",
+  "dependencies": {
+    "bootstrap": ">= 3.3.0",
+    "font-awesome": ">= 4.2.0",
+    "jquery": ">= 2.1.0"
+  },
+  "resolutions": {
+    "jquery": ">= 2.1.0"
+  }
+}

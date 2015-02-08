@@ -1,4 +1,13 @@
 {
+  "name": "Graphics-Tracker",
+  "version": "0.1.0",
+  "description": "Website for Tracking Graphics Jobs",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:elconejito/graphics-tracker.git"
+  },
+  "author": "Harvey Ramos",
+  "license": "MIT",
   "devDependencies": {
     "gulp": "^3.8.8",
     "laravel-elixir": "*"
