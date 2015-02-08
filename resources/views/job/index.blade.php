@@ -10,15 +10,14 @@
         </div>
         <div class="row">
             <div class="col-md-8">
-                <form method="POST" action="{{ action('JobsController@store') }}">
-                {{ Form }}
+                {{!! Form::open() !!}}
                     <div class="input-group">
                         <input type="text" class="form-control" id="graphic" name="graphic" placeholder="Graphic Number or Name">
                         <span class="input-group-btn">
                             <button type="submit" class="btn btn-default">Add</button>
                         </span>
                     </div>
-                </form>
+                {{!! Form::close() !!}}
             </div>
         </div>
         <div class="row">
