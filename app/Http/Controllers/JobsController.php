@@ -3,7 +3,8 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use Request;
 use Illuminate\Support\Facades\View;
 
 class JobsController extends Controller {
@@ -35,7 +36,9 @@ class JobsController extends Controller {
 	 */
 	public function store()
 	{
-		//
+		$input = Request::all();
+
+		return Redirect::action('JobsController@index');
 	}
 
 	/**
