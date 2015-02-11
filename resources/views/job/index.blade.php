@@ -33,20 +33,21 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @if ( $jobs->isEmpty() )
                         <tr>
-                            <td>ABCXYZ001</td>
-                            <td>New</td>
-                            <td>ABC XYZ</td>
-                            <td>1 Hr</td>
-                            <td>Me</td>
+                            <td colspan="4">No jobs in this timeframe</td>
                         </tr>
-                        <tr>
-                            <td>XYZABC001</td>
+                        @else
+                            @foreach ( $jobs as $job )
+                        <tr id="job_{{ $job->id }}">
+                            <td>{{ $job->graphic }}</td>
                             <td>New</td>
                             <td>XYZ ABC</td>
                             <td>1 Hr</td>
-                            <td>Bob Smith</td>
+                            <td>User</td>
                         </tr>
+                            @endforeach
+                        @endif
                     </tbody>
                 </table>
             </div>

@@ -47,9 +47,32 @@
 			</div>
 		</div>
 	</nav>
-
+	
+	{!! App\Flash::message() !!}
+	
 	@yield('content')
 
+	<div class="modal fade" id="modalTarget">
+	    <div class="modal-dialog">
+	        <div class="modal-content">
+	        	<div class="modal-header">
+				    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+				    <h4 class="modal-title"></h4>
+				</div>
+				<div class="modal-body">
+				    <h3><i class="fa fa-exclamation-triangle"></i> CAUTION!</h3>
+					<p>You are about to delete the <span class="modal-delete-object"></span> &quot;<strong><span class="modal-delete-name"></span></strong>&quot;. This action is NOT reversible.</p>
+					<p>Are you REALLY SURE you wish to delete this <span class="modal-delete-object"></span>? This cannot be undone. If you are really sure, then click the delete button below.</p>
+					<p>If you are not sure, remain calm, just hit the cancel button below or press the escape key and slowly back away from the keyboard...</p>
+					{{ Form::open( ['method'=>'DELETE', 'id' => 'modalForm'] ) . Form::close() }}
+				</div>
+				<div class="modal-footer">
+				    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        			<button type="button" class="btn btn-danger">DELETE</button>
+				</div>
+	        </div><!-- /.modal-content -->
+	    </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
 	<!-- Scripts -->
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
