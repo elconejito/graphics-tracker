@@ -44,7 +44,7 @@ class JobsController extends Controller {
 	public function store(CreateJobRequest $request)
 	{
 		// create the new job
-		$job = Job::create($request->all());
+		$job = new Job($request->all());
 		// associate the owner
 		$job->owner()->associate(Auth::user());
 		$job->setNew();
