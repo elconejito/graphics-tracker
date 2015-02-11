@@ -1,10 +1,13 @@
 <?php namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Job extends Model {
 
 	protected $fillable = [ 'graphic' ];
+
+	protected $dates = [ 'job_start', 'job_end' ];
 
 	/**
 	 * @return BelongsTo
@@ -27,8 +30,13 @@ class Job extends Model {
 	 */
 	public function setNew() {
 		$count = Job::where('graphic', '=', $this->graphic)->count();
+		$this->new = ( $count > 1 ? false:true );
+	}
 
-		$this->new = ( $count > 0 ? false:true );
+	public function setTimes($times) {
+		$this->job_end = $times['job_end'];
+		$this->duration = $times['duration'];
+		$this->job_start = $times['job_end']->subMinutes($times['duration']);
 	}
 
 }

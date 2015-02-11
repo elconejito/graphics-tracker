@@ -28,7 +28,9 @@
                             <th>Graphic #</th>
                             <th>Type (N/E)</th>
                             <th>Project</th>
-                            <th>Time</th>
+                            <th>Duration</th>
+                            <th>Started</th>
+                            <th>Finished</th>
                             <th>User</th>
                         </tr>
                     </thead>
@@ -41,9 +43,11 @@
                             @foreach ( $jobs as $job )
                         <tr id="job_{{ $job->id }}">
                             <td>{{ $job->graphic }}</td>
-                            <td>New</td>
+                            <td>{{ ($job->new ? 'new':'edit') }}</td>
                             <td>XYZ ABC</td>
-                            <td>1 Hr</td>
+                            <td>{{ $job->duration }}</td>
+                            <td>{{ $job->job_start->toDateTimeString() }}</td>
+                            <td>{{ $job->job_end->toDateTimeString() }}</td>
                             <td>{{ ($job->owner->name == Auth::user()->name ? 'me':$job->owner->name) }}</td>
                         </tr>
                             @endforeach

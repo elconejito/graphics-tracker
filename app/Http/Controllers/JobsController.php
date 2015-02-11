@@ -3,6 +3,7 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\View;
 
@@ -47,6 +48,10 @@ class JobsController extends Controller {
 		// associate the owner
 		$job->owner()->associate(Auth::user());
 		$job->setNew();
+		$job->setTimes([
+			'job_end' => Carbon::now(),
+			'duration' => 60,
+		]);
 		$job->save();
 
 		return Redirect('jobs');
