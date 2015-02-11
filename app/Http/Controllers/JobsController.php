@@ -20,7 +20,7 @@ class JobsController extends Controller {
 	 */
 	public function index()
 	{
-		$jobs = Job::all();
+		$jobs = Job::where('user_id', '=', Auth::user()->id)->get();
 		
 		return View::make('job.index', compact('jobs'));
 	}
@@ -42,9 +42,11 @@ class JobsController extends Controller {
 	 */
 	public function store(CreateJobRequest $request)
 	{
+		// create the new job
 		$job = Job::create($request->all());
-
+		// associate the owner
 		$job->owner()->associate(Auth::user());
+		$job->setNew();
 		$job->save();
 
 		return Redirect('jobs');
