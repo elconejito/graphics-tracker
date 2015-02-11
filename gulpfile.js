@@ -1,6 +1,11 @@
 var elixir = require('laravel-elixir');
 var jsList = [
- '_main.js'
+    '../assets/vendor/x-editable/dist/bootstrap3-editable/js/bootstrap-editable.js',
+    '_main.js'
+];
+var cssList = [
+    '../assets/vendor/x-editable/dist/bootstrap3-editable/css/bootstrap-editable.css',
+    'app.css'
 ];
 
 /*
@@ -15,7 +20,7 @@ var jsList = [
  */
 
 elixir(function (mix) {
- mix.less('app.less')
-     .scripts(jsList, 'public/js/main.js');
+    mix.less('app.less', 'resources/css')
+        .scripts(jsList, 'public/js/main.js')
+        .styles(cssList, 'public/css/app.css');
 });
-

@@ -41,6 +41,8 @@ $( document ).ready(function() {
 		}
 	});
 
+	$('.edit').editable('http://www.example.com/save.php');
+
 	$('.modal').on('click', 'button.post', function(e) {
 		var $button = $(this);
 		$button.button('loading');

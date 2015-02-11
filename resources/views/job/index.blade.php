@@ -43,7 +43,7 @@
                         @else
                             @foreach ( $jobs as $job )
                         <tr id="job_{{ $job->id }}">
-                            <td>{{ $job->id }}-{{ $job->graphic }}</td>
+                            <td>{{ $job->graphic }}</td>
                             <td>{{ ($job->new ? 'new':'edit') }}</td>
                             <td>XYZ ABC</td>
                             <td>{{ $job->duration }}</td>
