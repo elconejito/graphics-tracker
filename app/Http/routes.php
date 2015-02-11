@@ -15,6 +15,8 @@ Route::get('/', 'WelcomeController@index');
 
 Route::get('home', 'HomeController@index');
 
+Route::get('modal/{model}/{id}', 'ModalController@show');
+
 Route::resource('jobs', 'JobsController');
 
 Route::controllers([

@@ -32,6 +32,7 @@
                             <th>Started</th>
                             <th>Finished</th>
                             <th>User</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -42,13 +43,16 @@
                         @else
                             @foreach ( $jobs as $job )
                         <tr id="job_{{ $job->id }}">
-                            <td>{{ $job->graphic }}</td>
+                            <td>{{ $job->id }}-{{ $job->graphic }}</td>
                             <td>{{ ($job->new ? 'new':'edit') }}</td>
                             <td>XYZ ABC</td>
                             <td>{{ $job->duration }}</td>
                             <td>{{ $job->job_start->toDateTimeString() }}</td>
                             <td>{{ $job->job_end->toDateTimeString() }}</td>
                             <td>{{ ($job->owner->name == Auth::user()->name ? 'me':$job->owner->name) }}</td>
+                            <td>
+                                <a class="btn btn-danger" href="{{ action('ModalController@show', ['job', $job->id]) }}" data-toggle="modal" data-target="#modalTarget"><i class="fa fa-trash"></i></a>
+                            </td>
                         </tr>
                             @endforeach
                         @endif

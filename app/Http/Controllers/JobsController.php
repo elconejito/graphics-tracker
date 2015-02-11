@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\View;
 use App\Job;
 use App\Http\Requests\CreateJobRequest;
 
-use Auth;
+use Auth, Response;
 
 class JobsController extends Controller {
 
@@ -58,6 +58,9 @@ class JobsController extends Controller {
 		]);
 		$job->save();
 
+		session()->flash('message', 'Job has been added');
+		session()->flash('message-type', 'success');
+
 		return Redirect('jobs');
 	}
 
@@ -102,7 +105,32 @@ class JobsController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		//
+		$result = Job::destroy($id);
+
+		if ( $result ) {
+			session()->flash('message', 'Job has been deleted');
+			session()->flash('message-type', 'success');
+			$response = [
+				'status' => 1,
+				'code' => 200,
+				'message' => 'success',
+				'data' => [
+					'action' => 'redirect',
+					'url' => action('JobsController@index')
+				]
+			];
+		} else {
+			session()->flash('message', 'Job has NOT been deleted');
+			session()->flash('message-type', 'danger');
+			$response = [
+				'status' => 0,
+				'code' => 300,
+				'message' => 'fail',
+				'data' => ''
+			];
+		}
+
+		return Response::json($response);
 	}
 
 }

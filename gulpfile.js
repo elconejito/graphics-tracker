@@ -1,4 +1,7 @@
 var elixir = require('laravel-elixir');
+var jsList = [
+ '_main.js'
+];
 
 /*
  |--------------------------------------------------------------------------
@@ -11,6 +14,8 @@ var elixir = require('laravel-elixir');
  |
  */
 
-elixir(function(mix) {
-    mix.less('app.less');
+elixir(function (mix) {
+ mix.less('app.less')
+     .scripts(jsList, 'public/js/main.js');
 });
+

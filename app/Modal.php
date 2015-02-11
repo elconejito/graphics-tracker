@@ -1,6 +1,6 @@
 <?php namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Form;
 
 class Modal {
 	public $type, $title, $body, $buttons, $objectName, $objectType, $form;
@@ -35,5 +35,34 @@ class Modal {
 			$btnText .= sprintf('<button type="button" class="%s" %s>%s</button>', $class, $data, $text);
 		}
 		return $btnText;
+	}
+
+	public function setDelete($data) {
+		$this->title = 'Delete '.$data['name'].'?';
+		$this->body = 'components.modals.delete';
+		$this->form = Form::open( ['method'=>'DELETE', 'action' => [$data['controller'], $data['id']], 'id' => 'modalForm'] ) . Form::close();
+		$this->buttons = $this->getDeleteButtons();
+		$this->objectType = $data['type'];
+		$this->objectName = $data['name'];
+	}
+
+	public function getDeleteButtons() {
+		$buttons = [
+			'delete' => [
+				'text' => 'DELETE',
+				'class' => 'btn btn-danger post',
+				'data' => [
+					'target' => '#modalForm'
+				]
+			],
+			'close' => [
+				'text' => 'Cancel',
+				'class' => 'btn btn-default',
+				'data' => [
+					'dismiss' => 'modal'
+				]
+			]
+		];
+		return $buttons;
 	}
 }
