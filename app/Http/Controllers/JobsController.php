@@ -43,8 +43,9 @@ class JobsController extends Controller {
 	public function store(CreateJobRequest $request)
 	{
 		$job = Job::create($request->all());
-		
+
 		$job->owner()->associate(Auth::user());
+		$job->save();
 
 		return Redirect('jobs');
 	}

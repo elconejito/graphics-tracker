@@ -44,7 +44,7 @@
                             <td>New</td>
                             <td>XYZ ABC</td>
                             <td>1 Hr</td>
-                            <td>User</td>
+                            <td>{{ ($job->owner->name == Auth::user()->name ? 'me':$job->owner->name) }}</td>
                         </tr>
                             @endforeach
                         @endif
