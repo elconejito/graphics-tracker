@@ -7,7 +7,11 @@ class Job extends Model {
 	protected $fillable = [ 'graphic' ];
 
 	public function project() {
-		return $this->belongsTo('Project');
+		return $this->belongsTo('App\Project');
+	}
+	
+	public function owner() {
+		return $this->belongsTo('App\User');
 	}
 
 }
