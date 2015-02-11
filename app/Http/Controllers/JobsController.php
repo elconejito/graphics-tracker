@@ -4,8 +4,12 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Support\Facades\Redirect;
-use Request;
 use Illuminate\Support\Facades\View;
+
+use App\Job;
+use App\Http\Requests\CreateJobRequest;
+
+use Auth;
 
 class JobsController extends Controller {
 
@@ -16,7 +20,9 @@ class JobsController extends Controller {
 	 */
 	public function index()
 	{
-		return View::make('job.index');
+		$jobs = Job::all();
+		
+		return View::make('job.index', compact('jobs'));
 	}
 
 	/**
@@ -34,11 +40,13 @@ class JobsController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(CreateJobRequest $request)
 	{
-		$input = Request::all();
+		$job = Job::create($request->all());
+		
+		$job->owner()->associate(Auth::user());
 
-		return Redirect::action('JobsController@index');
+		return Redirect('jobs');
 	}
 
 	/**
