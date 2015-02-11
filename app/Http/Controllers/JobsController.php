@@ -21,7 +21,7 @@ class JobsController extends Controller {
 	 */
 	public function index()
 	{
-		$jobs = Job::where('user_id', '=', Auth::user()->id)->get();
+		$jobs = Job::latest('job_end')->where('user_id', '=', Auth::user()->id)->get();
 		
 		return View::make('job.index', compact('jobs'));
 	}
