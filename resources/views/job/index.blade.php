@@ -43,7 +43,7 @@
                         @else
                             @foreach ( $jobs as $job )
                         <tr id="job_{{ $job->id }}">
-                            <td>{{ $job->graphic }}</td>
+                            <td><a href="#" class="editable" data-type="text" data-name="graphic" data-pk="{{ $job->id }}" data-url="{{ action('JobsController@update', $job->id) }}" data-title="Change Graphic Name">{{ $job->graphic }}</a></td>
                             <td>{{ ($job->new ? 'new':'edit') }}</td>
                             <td>XYZ ABC</td>
                             <td>{{ $job->duration }}</td>

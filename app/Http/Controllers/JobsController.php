@@ -3,6 +3,7 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Http\Requests\UpdateJobRequest;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\View;
@@ -42,6 +43,8 @@ class JobsController extends Controller {
 
 	/**
 	 * Store a newly created resource in storage.
+	 *
+	 * @param CreateJobRequest $request
 	 *
 	 * @return Response
 	 */
@@ -89,12 +92,22 @@ class JobsController extends Controller {
 	/**
 	 * Update the specified resource in storage.
 	 *
-	 * @param  int  $id
+	 * @param                  $id
+	 * @param UpdateJobRequest $request
+	 *
 	 * @return Response
+	 * @internal param int $id
 	 */
-	public function update($id)
+	public function update($id, UpdateJobRequest $request)
 	{
-		//
+		// create the new job
+		$job = Job::find($id);
+
+		$job->update($request->all());
+
+		return response()->json([
+			'status' => 'OK'
+		]);
 	}
 
 	/**

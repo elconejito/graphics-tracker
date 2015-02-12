@@ -6848,7 +6848,18 @@ $( document ).ready(function() {
 		}
 	});
 
-	$('.edit').editable('http://www.example.com/save.php');
+	$('.editable').editable({
+		mode: 'inline',
+		toggle: 'dblclick',
+		params: function(params) {
+			var data = {};
+			data[params.name] = params.value;
+			data['_token'] = $('input[name="_token"]').val();
+			data['_method'] = 'put';
+			return data;
+		},
+		showbuttons: false
+	});
 
 	$('.modal').on('click', 'button.post', function(e) {
 		var $button = $(this);
