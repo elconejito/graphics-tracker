@@ -27,7 +27,6 @@
                         <tr>
                             <th>Graphic #</th>
                             <th>Type (N/E)</th>
-                            <th>Project</th>
                             <th>Duration</th>
                             <th>Started</th>
                             <th>Finished</th>
@@ -45,10 +44,9 @@
                         <tr id="job_{{ $job->id }}">
                             <td><a href="#" class="editable" data-type="text" data-name="graphic" data-pk="{{ $job->id }}" data-url="{{ action('JobsController@update', $job->id) }}" data-title="Change Graphic Name">{{ $job->graphic }}</a></td>
                             <td>{{ ($job->new ? 'new':'edit') }}</td>
-                            <td>XYZ ABC</td>
                             <td>{{ $job->duration }}</td>
-                            <td>{{ $job->job_start->toDateTimeString() }}</td>
-                            <td>{{ $job->job_end->toDateTimeString() }}</td>
+                            <td>{!! $job->getJobStart() !!}</td>
+                            <td>{!! $job->getJobEnd() !!}</td>
                             <td>{{ ($job->owner->name == Auth::user()->name ? 'me':$job->owner->name) }}</td>
                             <td>
                                 <a class="btn btn-danger" href="{{ action('ModalController@show', ['job', $job->id]) }}" data-toggle="modal" data-target="#modalTarget"><i class="fa fa-trash"></i></a>
