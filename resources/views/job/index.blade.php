@@ -57,6 +57,27 @@
                     </tbody>
                 </table>
             </div>
+            <div class="col-md-3 col-md-offset-1">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">This Week</h3>
+                    </div>
+                    <div class="panel-body">
+                        <p>Total graphics done this week among all projects</p>
+                    </div>
+                    <!-- List group -->
+                    <ul class="list-group">
+                        <li class="list-group-item"><span class="badge">{{ App\Job::mine()->day('monday')->count() }}</span>Monday</li>
+                        <li class="list-group-item"><span class="badge">{{ App\Job::mine()->day('tuesday')->count() }}</span>Tuesday</li>
+                        <li class="list-group-item"><span class="badge">{{ App\Job::mine()->day('wednesday')->count() }}</span>Wednesday</li>
+                        <li class="list-group-item"><span class="badge">{{ App\Job::mine()->day('thursday')->count() }}</span>Thursday</li>
+                        <li class="list-group-item"><span class="badge">{{ App\Job::mine()->day('friday')->count() }}</span>Friday</li>
+                        <li class="list-group-item"><span class="badge">{{ App\Job::mine()->day('saturday')->count() }}</span>Saturday</li>
+                        <li class="list-group-item"><span class="badge">{{ App\Job::mine()->day('sunday')->count() }}</span>Sunday</li>
+                        <li class="list-group-item list-group-item-info"><span class="badge">{{ App\Job::mine()->week()->count() }}</span>TOTAL</li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 @endsection
