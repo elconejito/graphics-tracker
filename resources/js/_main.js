@@ -6,6 +6,7 @@ function removeDOMObject($id) {
 // Alert Message Functions
 function displayAlert($type,$message,$location) {
 	$location = typeof $location !== 'undefined' ? $location : '.content';
+	var $icon;
 
 	switch ( $type ) {
 		case 'danger':
@@ -21,7 +22,7 @@ function displayAlert($type,$message,$location) {
 			$icon = '';
 	}
 
-	$string = '<div class="alert alert-' + $type + ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' + $icon + ' ' + $message + '</div>';
+	var $string = '<div class="alert alert-' + $type + ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' + $icon + ' ' + $message + '</div>';
 
 	$($location).prepend($string);
 }
@@ -40,7 +41,13 @@ $( document ).ready(function() {
 			return false;
 		}
 	});
-
+	
+	$('#jobList').on('click', '.editable, .editable-date', function(e) {
+		console.log('editable clicked');
+		e.preventDefault; 
+	});
+	$('#datetimepicker').datetimepicker();
+	
 	$('.editable').editable({
 		mode: 'inline',
 		toggle: 'dblclick',
@@ -53,7 +60,25 @@ $( document ).ready(function() {
 		},
 		showbuttons: false
 	});
-
+	
+	$('.editable-date').editable({
+        format: 'yyyy-mm-dd hh:ii:ss',    
+        viewformat: 'mm/dd/yyyy hh:ii',    
+        datetimepicker: {
+            weekStart: 1,
+            fontAwesome: true
+		},
+		toggle: 'dblclick',
+		params: function(params) {
+			var data = {};
+			data[params.name] = params.value;
+			data['_token'] = $('input[name="_token"]').val();
+			data['_method'] = 'put';
+			return data;
+		},
+		showbuttons: false
+    });
+	
 	$('.modal').on('click', 'button.post', function(e) {
 		var $button = $(this);
 		$button.button('loading');

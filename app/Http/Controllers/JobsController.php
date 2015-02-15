@@ -104,9 +104,14 @@ class JobsController extends Controller {
 		$job = Job::find($id);
 
 		$job->update($request->all());
+		
+		$job->setTimes($request->only('job_start','job_end', 'duration'));
+		
+		$job->save();
 
 		return response()->json([
-			'status' => 'OK'
+			'status' => 'OK',
+			'request' => $request->only('job_start','job_end', 'duration')
 		]);
 	}
 

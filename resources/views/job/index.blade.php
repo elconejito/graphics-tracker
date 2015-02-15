@@ -22,7 +22,7 @@
         </div>
         <div class="row">
             <div class="col-md-8">
-                <table class="table">
+                <table class="table" id="jobList">
                     <thead>
                         <tr>
                             <th>Graphic #</th>
@@ -42,11 +42,11 @@
                         @else
                             @foreach ( $jobs as $job )
                         <tr id="job_{{ $job->id }}">
-                            <td><a href="#" class="editable" data-type="text" data-name="graphic" data-pk="{{ $job->id }}" data-url="{{ action('JobsController@update', $job->id) }}" data-title="Change Graphic Name">{{ $job->graphic }}</a></td>
+                            <td><a class="editable" data-type="text" data-name="graphic" data-pk="{{ $job->id }}" data-url="{{ action('JobsController@update', $job->id) }}" >{{ $job->graphic }}</a></td>
                             <td>{{ ($job->new ? 'new':'edit') }}</td>
-                            <td>{{ $job->duration }}</td>
-                            <td>{!! $job->getJobStart() !!}</td>
-                            <td>{!! $job->getJobEnd() !!}</td>
+                            <td><a class="editable" data-type="text" data-name="duration" data-pk="{{ $job->id }}" data-url="{{ action('JobsController@update', $job->id) }}" >{{ $job->duration }}</a></td>
+                            <td><a class="editable-date" data-type="datetime" data-name="job_start" data-pk="{{ $job->id }}" data-url="{{ action('JobsController@update', $job->id) }}" data-value="{{ $job->job_start }}" >{!! $job->getJobStart() !!}</a></td>
+                            <td><a class="editable-date" data-type="datetime" data-name="job_end" data-pk="{{ $job->id }}" data-url="{{ action('JobsController@update', $job->id) }}" data-value="{{ $job->job_end }}" >{!! $job->getJobEnd() !!}</a></td>
                             <td>{{ ($job->owner->name == Auth::user()->name ? 'me':$job->owner->name) }}</td>
                             <td>
                                 <a class="btn btn-danger" href="{{ action('ModalController@show', ['job', $job->id]) }}" data-toggle="modal" data-target="#modalTarget"><i class="fa fa-trash"></i></a>

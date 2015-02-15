@@ -35,16 +35,19 @@ class Job extends Model {
 	}
 
 	public function setTimes($times) {
+		if ( isset($times['duration']) ) {
+			$this->duration = $times['duration'];
+		} else {
+			$this->duration = ( $this->duration ? $this->duration : 60 );
+		}
 		if ( isset($times['job_end']) ) {
-			$this->job_end = $times['job_end'];
-			$this->duration = $times['duration'];
-			$this->job_start = $times['job_end']->subMinutes($times['duration']);
+			$this->job_end = Carbon::createFromFormat('Y-m-d H:i:s', $times['job_end']);
+			$this->job_start = $this->job_end->copy()->subMinutes($this->duration);
 		} elseif ( isset($times['job_start']) ) {
-			$this->job_start = $times['job_start'];
-			$this->duration = $times['duration'];
-			$this->job_end = $times['job_start']->addMinutes($times['duration']);
+			$this->job_start = Carbon::createFromFormat('Y-m-d H:i:s', $times['job_start']);
+			$this->job_end = $this->job_start->copy()->addMinutes($this->duration);
 		} elseif ( isset($times['duration']) ) {
-			$this->job_start = $this->job_end->subMinutes($times['duration']);
+			$this->job_start = $this->job_end->copy()->subMinutes($this->duration);
 		}
 		
 	}
