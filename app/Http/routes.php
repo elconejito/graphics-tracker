@@ -18,6 +18,7 @@ Route::get('home', 'HomeController@index');
 Route::get('modal/{model}/{id}', 'ModalController@show');
 
 Route::resource('jobs', 'JobsController');
+Route::resource('projects', 'ProjectsController');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
