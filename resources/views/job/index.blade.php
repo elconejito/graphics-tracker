@@ -27,6 +27,7 @@
                         <tr>
                             <th>Graphic #</th>
                             <th>Type (N/E)</th>
+                            <th>Project</th>
                             <th>Duration</th>
                             <th>Started</th>
                             <th>Finished</th>
@@ -44,6 +45,7 @@
                         <tr id="job_{{ $job->id }}">
                             <td><a class="editable" data-type="text" data-name="graphic" data-pk="{{ $job->id }}" data-url="{{ action('JobsController@update', $job->id) }}" >{{ $job->graphic }}</a></td>
                             <td>{{ ($job->new ? 'new':'edit') }}</td>
+                            <td>{{ $job->project->getName() }}</td>
                             <td><a class="editable" data-type="text" data-name="duration" data-pk="{{ $job->id }}" data-url="{{ action('JobsController@update', $job->id) }}" >{{ $job->duration }}</a></td>
                             <td><a class="editable-date" data-type="datetime" data-name="job_start" data-pk="{{ $job->id }}" data-url="{{ action('JobsController@update', $job->id) }}" data-value="{{ $job->job_start }}" >{!! $job->getJobStart() !!}</a></td>
                             <td><a class="editable-date" data-type="datetime" data-name="job_end" data-pk="{{ $job->id }}" data-url="{{ action('JobsController@update', $job->id) }}" data-value="{{ $job->job_end }}" >{!! $job->getJobEnd() !!}</a></td>

@@ -54,6 +54,7 @@ class JobsController extends Controller {
 		$job = new Job($request->all());
 		// associate the owner
 		$job->owner()->associate(Auth::user());
+		$job->setProject();
 		$job->setNew();
 		$job->setTimes([
 			'job_end' => Carbon::now(),

@@ -33,6 +33,12 @@ class Job extends Model {
 		$count = Job::where('graphic', '=', $this->graphic)->count();
 		$this->new = ( $count >= 1 ? false:true );
 	}
+	
+	public function setProject() {
+		$trimmed = substr($this->graphic, 0, -3);	// remove the 3 digits at the end
+		$project = Project::firstOrCreate(['shortcode' => $trimmed]);
+		$this->project()->associate($project);
+	}
 
 	public function setTimes($times) {
 		if ( isset($times['duration']) ) {
