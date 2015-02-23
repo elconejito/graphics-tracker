@@ -60,20 +60,36 @@ class Job extends Model {
 
 	public function getJobStart() {
 		if ($this->job_start->isToday())
-			return '<span title="'.$this->job_start->format('D M jS, Y h:i A').'">'.$this->job_start->diffForHumans().'</span>';
+			return '<span title="'.$this->job_start->format('D M j, Y h:iA').'">'.$this->job_start->diffForHumans().'</span>';
+		
+		if ( $this->job_start->gte($this->job_start->copy()->startOfWeek()))
+			return '<span title="'.$this->job_start->format('D M j, Y h:iA').'">'.$this->job_start->format('D h:iA').'</span>';
+			
+		if ( $this->job_start->year->gte(Carbon::now()->year) )
+			return '<span title="'.$this->job_start->format('D M j, Y h:iA').'">'.$this->job_start->format('D M j, h:iA').'</span>';
 
-		return $this->job_start->format('D M jS, Y h:i A');
+		return $this->job_start->format('D M j, Y h:iA');
 	}
 
 	public function getJobEnd() {
 		if ($this->job_end->isToday())
 			return '<span title="'.$this->job_end->format('D M jS, Y h:i A').'">'.$this->job_end->diffForHumans().'</span>';
-
-		return $this->job_end->format('D M jS, Y h:i A');
+		
+		if ( $this->job_end->gte($this->job_end->copy()->startOfWeek()))
+			return '<span title="'.$this->job_end->format('D M j, Y h:iA').'">'.$this->job_end->format('D h:iA').'</span>';
+			
+		if ( $this->job_end->year->gte(Carbon::now()->year) )
+			return '<span title="'.$this->job_end->format('D M j, Y h:iA').'">'.$this->job_end->format('D M j, h:iA').'</span>';
+			
+		return $this->job_end->format('D M j, Y h:iA');
 	}
 	
 	public function scopeMine($query) {
 		$query->where('user_id', '=', Auth::user()->id);
+	}
+	
+	public function scopeProject($query, $id) {
+		$query->where('project_id', '=', $id);
 	}
 	
 	public function scopeDay($query, $day) {

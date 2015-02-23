@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\View;
 
 use App\Project;
+use App\Job;
 
 use Auth, Response;
 
@@ -58,9 +59,12 @@ class ProjectsController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function show($id, $timeframe='thisweek')
 	{
-		//
+		$jobs = Job::latest('job_end')->mine()->project($id)->get();
+		$project = Project::find($id);
+		
+		return view('project.show', compact('project','jobs'));
 	}
 
 	/**

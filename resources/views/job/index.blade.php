@@ -21,7 +21,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-9">
                 <table class="table" id="jobList">
                     <thead>
                         <tr>
@@ -45,7 +45,7 @@
                         <tr id="job_{{ $job->id }}">
                             <td><a class="editable" data-type="text" data-name="graphic" data-pk="{{ $job->id }}" data-url="{{ action('JobsController@update', $job->id) }}" >{{ $job->graphic }}</a></td>
                             <td>{{ ($job->new ? 'new':'edit') }}</td>
-                            <td>{{ $job->project->getName() }}</td>
+                            <td><a href="{{ action('ProjectsController@show', $job->project->id) }}">{{ $job->project->getName() }}</a></td>
                             <td><a class="editable" data-type="text" data-name="duration" data-pk="{{ $job->id }}" data-url="{{ action('JobsController@update', $job->id) }}" >{{ $job->duration }}</a></td>
                             <td><a class="editable-date" data-type="datetime" data-name="job_start" data-pk="{{ $job->id }}" data-url="{{ action('JobsController@update', $job->id) }}" data-value="{{ $job->job_start }}" >{!! $job->getJobStart() !!}</a></td>
                             <td><a class="editable-date" data-type="datetime" data-name="job_end" data-pk="{{ $job->id }}" data-url="{{ action('JobsController@update', $job->id) }}" data-value="{{ $job->job_end }}" >{!! $job->getJobEnd() !!}</a></td>
@@ -59,7 +59,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="col-md-3 col-md-offset-1">
+            <div class="col-md-2 col-md-offset-1">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title">This Week</h3>

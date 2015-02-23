@@ -18,6 +18,8 @@ Route::get('home', 'HomeController@index');
 Route::get('modal/{model}/{id}', 'ModalController@show');
 
 Route::resource('jobs', 'JobsController');
+
+Route::get('projects/{id}/{user?}/{timeframe?}', 'ProjectsController@show');
 Route::resource('projects', 'ProjectsController');
 
 Route::controllers([
