@@ -64,7 +64,7 @@
                         <li class="list-group-item"><span class="badge">{{ App\Job::mine()->project($project->id)->day('friday')->count() }}</span>Friday</li>
                         <li class="list-group-item"><span class="badge">{{ App\Job::mine()->project($project->id)->day('saturday')->count() }}</span>Saturday</li>
                         <li class="list-group-item"><span class="badge">{{ App\Job::mine()->project($project->id)->day('sunday')->count() }}</span>Sunday</li>
-                        <li class="list-group-item list-group-item-info"><span class="badge">{{ App\Job::mine()->project($project->id)->week()->count() }}</span>TOTAL</li>
+                        <li class="list-group-item list-group-item-info"><span class="badge">{{ App\Job::mine()->project($project->id)->thisweek()->count() }}</span>TOTAL</li>
                     </ul>
                 </div>
             </div>

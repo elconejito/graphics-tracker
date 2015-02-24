@@ -107,9 +107,15 @@ class Job extends Model {
 		$query->whereBetween('job_end', [ $start, $end ]);
 	}
 	
-	public function scopeWeek($query) {
+	public function scopeThisWeek($query) {
 		$dt = Carbon::now()->startOfWeek()->startOfDay();
 		$query->where('job_end', '>=', $dt);
+	}
+	
+	public function scopeLastWeek($query) {
+		$start = Carbon::now()->previous()->startOfWeek()->startOfDay();
+		$end = Carbon::now()->startOfWeek()->startOfDay();
+		$query->whereBetween('job_end', [ $start, $end ]);
 	}
 
 }

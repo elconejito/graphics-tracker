@@ -17,6 +17,9 @@ Route::get('home', 'HomeController@index');
 
 Route::get('modal/{model}/{id}', 'ModalController@show');
 
+Route::get('jobs/{id}', 'JobsController@show')
+		->where('id', '[0-9]+');
+Route::get('jobs/{user?}/{timeframe?}', 'JobsController@index');
 Route::resource('jobs', 'JobsController');
 
 Route::get('projects/{id}/{user?}/{timeframe?}', 'ProjectsController@show');

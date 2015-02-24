@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>Your Jobs</h1>
+                <h1>Your Jobs: <small>{{ $timeframe }}</small></h1>
                 <p>breadcrumbs</p>
             </div>
         </div>
@@ -76,7 +76,7 @@
                         <li class="list-group-item"><span class="badge">{{ App\Job::mine()->day('friday')->count() }}</span>Friday</li>
                         <li class="list-group-item"><span class="badge">{{ App\Job::mine()->day('saturday')->count() }}</span>Saturday</li>
                         <li class="list-group-item"><span class="badge">{{ App\Job::mine()->day('sunday')->count() }}</span>Sunday</li>
-                        <li class="list-group-item list-group-item-info"><span class="badge">{{ App\Job::mine()->week()->count() }}</span>TOTAL</li>
+                        <li class="list-group-item list-group-item-info"><span class="badge">{{ App\Job::mine()->thisweek()->count() }}</span>TOTAL</li>
                     </ul>
                 </div>
             </div>

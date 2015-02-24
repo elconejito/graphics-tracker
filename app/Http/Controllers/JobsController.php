@@ -24,11 +24,11 @@ class JobsController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function index($user='mine', $timeframe='thisweek')
 	{
-		$jobs = Job::latest('job_end')->mine()->get();
+		$jobs = Job::latest('job_end')->mine()->$timeframe()->get();
 		
-		return view('job.index', compact('jobs'));
+		return view('job.index', compact('jobs','timeframe'));
 	}
 
 	/**
