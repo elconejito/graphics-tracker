@@ -85,7 +85,11 @@ class Job extends Model {
 	}
 	
 	public function scopeMine($query) {
-		$query->where('user_id', '=', Auth::user()->id);
+		$query->user(Auth::user()->id);
+	}
+	
+	public function scopeUser($query, $id) {
+		$query->where('user_id', '=', $id);
 	}
 	
 	public function scopeProject($query, $id) {
