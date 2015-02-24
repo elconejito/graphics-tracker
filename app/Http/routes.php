@@ -25,6 +25,8 @@ Route::resource('jobs', 'JobsController');
 Route::get('projects/{id}/{user?}/{timeframe?}', 'ProjectsController@show');
 Route::resource('projects', 'ProjectsController');
 
+Route::get('reports/{user?}/{timeframe?}', 'ReportsController@index');
+
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',

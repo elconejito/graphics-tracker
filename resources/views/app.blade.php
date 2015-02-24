@@ -22,7 +22,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">Laravel</a>
+				<span class="navbar-brand">Laravel</span>
 			</div>
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -30,6 +30,7 @@
 					<li><a href="/">Home</a></li>
 					<li><a href="{{ action('JobsController@index') }}">Jobs</a></li>
 					<li><a href="{{ action('ProjectsController@index') }}">Projects</a></li>
+					<li><a href="{{ action('ReportsController@index') }}">Reports</a></li>
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">

@@ -1,0 +1,26 @@
+<?php namespace App\Http\Controllers;
+
+use App\Http\Requests;
+use App\Http\Controllers\Controller;
+
+use Illuminate\Http\Request;
+
+use App\Project;
+
+class ReportsController extends Controller {
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function index($user='mine', $timeframe='thisweek')
+	{
+		
+		$projects = Project::whereHas('jobs', function($query) use ($timeframe, $user) {
+			$query->$user()->$timeframe();
+		})->get();
+		return view('report.index', compact('projects','timeframe'));
+	}
+
+}
