@@ -92,6 +92,14 @@ class Job extends Model {
 		$query->where('user_id', '=', $id);
 	}
 	
+	public function scopeNew($query) {
+		$query->where('new', '=', true);
+	}
+	
+	public function scopeEdit($query) {
+		$query->where('new', '=', false);
+	}
+	
 	public function scopeProject($query, $id) {
 		$query->where('project_id', '=', $id);
 	}
