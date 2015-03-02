@@ -28,7 +28,7 @@ class JobsController extends Controller {
 	{
 		$jobs = Job::latest('job_end')->$user()->$timeframe()->get();
 		
-		return view('job.index', compact('jobs','timeframe'));
+		return view('job.index', compact('jobs','timeframe','user'));
 	}
 
 	/**

@@ -145,6 +145,11 @@ return [
 		'App\Providers\ConfigServiceProvider',
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
+		
+		/**
+		 * Custom application service providers...
+		 */
+		'DaveJamesMiller\Breadcrumbs\ServiceProvider',
 
 	],
 
@@ -193,8 +198,13 @@ return [
 		'URL'       => 'Illuminate\Support\Facades\URL',
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
+		
+		/**
+		 * Custom Application aliases
+		 */
 		'Form'      => 'Illuminate\Html\FormFacade',
 		'Html'      => 'Illuminate\Html\HtmlFacade',
+		'Breadcrumbs' => 'DaveJamesMiller\Breadcrumbs\Facade',
 
 	],
 
