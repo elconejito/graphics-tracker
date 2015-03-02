@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-12">
                 <h1>Projects</h1>
-                <p>breadcrumbs</p>
+                {!! Breadcrumbs::render('projects') !!}
             </div>
         </div>
         <input type="hidden" name="_token" value="{{ csrf_token() }}">

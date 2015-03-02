@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-12">
                 <h1>Reports: <small>{{ $timeframe }}</small></h1>
-                <p>breadcrumbs</p>
+                {!! Breadcrumbs::render('reports') !!}
             </div>
         </div>
         <div class="row">
