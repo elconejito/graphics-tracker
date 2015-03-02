@@ -22,13 +22,21 @@ Route::get('modal/{model}/{id}', 'ModalController@show');
 
 Route::get('jobs/{id}', 'JobsController@show')
 		->where('id', '[0-9]+');
-Route::get('jobs/{timeframe?}/{user?}', 'JobsController@index');
+Route::get('jobs/{timeframe?}/{user?}', [
+	'as' => 'jobs_custom',
+	'uses' => 'JobsController@index'
+]);
 Route::resource('jobs', 'JobsController');
 
 Route::get('projects/{id}/{timeframe?}/{user?}', 'ProjectsController@show');
 Route::resource('projects', 'ProjectsController');
 
-Route::get('reports/{timeframe?}/{user?}', 'ReportsController@index');
+Route::get('reports/{timeframe?}/{user?}', 
+	[
+		'as' => 'reports',
+		'uses' => 'ReportsController@index'
+	]
+);
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
