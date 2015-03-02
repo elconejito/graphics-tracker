@@ -129,5 +129,16 @@ class Job extends Model {
 		$end = Carbon::now()->startOfWeek()->startOfDay();
 		$query->whereBetween('job_end', [ $start, $end ]);
 	}
+	
+	public function scopeThisMonth($query) {
+		$dt = Carbon::now()->startOfMonth()->startOfDay();
+		$query->where('job_end', '>=', $dt);
+	}
+	
+	public function scopeLastMonth($query) {
+		$start = Carbon::now()->previous()->startOfMonth()->startOfDay();
+		$end = Carbon::now()->startOfMonth()->startOfDay();
+		$query->whereBetween('job_end', [ $start, $end ]);
+	}
 
 }
