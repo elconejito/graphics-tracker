@@ -5,6 +5,7 @@
         <div class="row">
             <div class="col-md-12">
                 <h1>Reports: <small>{{ $timeframe }}</small></h1>
+                @include('components.calendars.reports')
                 {!! Breadcrumbs::render('reports') !!}
             </div>
         </div>
