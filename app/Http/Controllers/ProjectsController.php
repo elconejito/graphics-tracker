@@ -59,9 +59,9 @@ class ProjectsController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id, $timeframe='thisweek')
+	public function show($id, $timeframe='thisweek', $user='mine')
 	{
-		$jobs = Job::latest('job_end')->mine()->project($id)->get();
+		$jobs = Job::latest('job_end')->$user()->project($id)->get();
 		$project = Project::find($id);
 		
 		return view('project.show', compact('project','jobs'));

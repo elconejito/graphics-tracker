@@ -18,13 +18,13 @@ class ReportsController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function index($user='mine', $timeframe='thisweek')
+	public function index($timeframe='thisweek', $user='mine')
 	{
 		
 		$projects = Project::whereHas('jobs', function($query) use ($timeframe, $user) {
 			$query->$user()->$timeframe();
 		})->get();
-		return view('report.index', compact('projects','timeframe'));
+		return view('report.index', compact('projects','timeframe', 'user'));
 	}
 
 }
