@@ -2,6 +2,7 @@ var elixir = require('laravel-elixir');
 var jsList = [
     '../assets/vendor/x-editable/dist/bootstrap3-editable/js/bootstrap-editable.js',
     '../assets/vendor/smalot-bootstrap-datetimepicker/js/bootstrap-datetimepicker.js',
+    '../assets/vendor/Chart.js/Chart.js',
     '_main.js'
 ];
 var cssList = [

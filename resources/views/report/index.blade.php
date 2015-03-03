@@ -54,8 +54,14 @@
                     </tbody>
                 </table>
             </div>
-            <div class="col-md-3 col-md-offset-1">
-                
+            <div class="col-md-2 col-md-offset-1">
+                <canvas id="pieChart" width="200" height="200" data-stats='[{"value":5,"color":"#333333","label":"one"},{"value":1,"color":"#bbbbbb","label":"two"},{"value":1,"color":"#777777","label":"three"}]'></canvas>
+                <p>Percentage of Projects</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-9">
+                <canvas id="dailyChart" width="400" height="200" data-stats="[65, 59, 80, 81, 56, 55, 40]"></canvas>
             </div>
         </div>
     </div>
