@@ -10,7 +10,7 @@
         </div>
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-9 table-responsive">
                 <table class="table" id="jobList">
                     <thead>
                         <tr>

@@ -10,7 +10,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-9 table-responsive">
                 <table class="table">
                     <thead>
                         <tr>
