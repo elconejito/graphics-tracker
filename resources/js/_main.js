@@ -36,7 +36,7 @@ $( document ).ready(function() {
 
 	// ignore keypress of 'enter' key from forms in modals. needs to only accept clicking proper buttons
 	$('#defaultModal').on('keydown', 'form', function(e){
-		if(e.keyCode === 13) {
+		if (e.keyCode === 13) {
 			e.preventDefault();
 			return false;
 		}
@@ -76,6 +76,7 @@ $( document ).ready(function() {
 			data['_method'] = 'put';
 			return data;
 		},
+		container: 'body',
 		showbuttons: false
     });
 	
@@ -89,7 +90,7 @@ $( document ).ready(function() {
 			.done(function(response) {
 				if ( response.status === 1 ) {
 					$('#defaultModal').modal('hide');
-
+					
 					switch ( response.data.action ) {
 						case "create":
 							// show message
