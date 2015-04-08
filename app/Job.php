@@ -104,8 +104,10 @@ class Job extends Model {
 		$query->where('project_id', '=', $id);
 	}
 	
-	public function scopeDay($query, $day) {
-		$dt = Carbon::now()->startOfWeek();
+	public function scopeDay($query, $day, Carbon $dt=null) {
+		if ( $dt === null ) $dt = Carbon::now();
+		$dt->startOfWeek();
+		
 		$day = strtoupper($day);
 		
 		if ( $day === 'MONDAY' ) {
@@ -131,13 +133,13 @@ class Job extends Model {
 	}
 	
 	public function scopeThisMonth($query) {
-		$dt = Carbon::now()->startOfMonth()->startOfDay();
+		$dt = Carbon::now()->startOfMonth();
 		$query->where('job_end', '>=', $dt);
 	}
 	
 	public function scopeLastMonth($query) {
-		$start = Carbon::now()->previous()->startOfMonth()->startOfDay();
-		$end = Carbon::now()->startOfMonth()->startOfDay();
+		$start = Carbon::now()->subMonth()->startOfMonth();
+		$end = Carbon::now()->subMonth()->endOfMonth();
 		$query->whereBetween('job_end', [ $start, $end ]);
 	}
 

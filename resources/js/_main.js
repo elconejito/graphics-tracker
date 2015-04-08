@@ -127,6 +127,7 @@ $( document ).ready(function() {
 	// Get context with jQuery - using jQuery's .get() method.
 	var ctx = $("#dailyChart").get(0).getContext("2d");
 	var cty = $("#pieChart").get(0).getContext("2d");
+	
 	// Setup data for daily chart
 	var dailyData = {
     	labels: ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"],
@@ -138,12 +139,10 @@ $( document ).ready(function() {
 	};
 	// Setup data for daily chart
 	var pieData = $("#pieChart").data('stats');
-	console.log(dailyData);
-	console.log(pieData);
+	
 	// This will get the first returned node in the jQuery collection.
 	var myDailyChart = new Chart(ctx).Bar(dailyData);
 	// This will get the first returned node in the jQuery collection.
 	var myPieChart = new Chart(cty).Pie(pieData);
-	
 	
 });
